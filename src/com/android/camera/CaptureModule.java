@@ -1782,6 +1782,7 @@ public class CaptureModule extends BaseModule<CaptureUI> implements PhotoControl
             mState[i] = STATE_PREVIEW;
         }
         mLongshotActive = false;
+        mZoomValue = 1.0f;
     }
 
     private void setCurrentMode() {
