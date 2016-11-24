@@ -1081,7 +1081,9 @@ public class CaptureModule extends BaseModule<CaptureUI> implements PhotoControl
             mState[id] = STATE_WAITING_TOUCH_FOCUS;
             mCaptureSession[id].capture(builder.build(), mCaptureCallback, mCameraHandler);
             setAFModeToPreview(id, mControlAFMode);
-            Message message = mCameraHandler.obtainMessage(CANCEL_TOUCH_FOCUS, mCameraId[id]);
+            Message message = mCameraHandler.obtainMessage(
+                    CANCEL_TOUCH_FOCUS, Integer.valueOf(mCameraId[id]), 0);
+            message.arg1 = id;
             mCameraHandler.sendMessageDelayed(message, CANCEL_TOUCH_FOCUS_DELAY);
         } catch (CameraAccessException e) {
             e.printStackTrace();
