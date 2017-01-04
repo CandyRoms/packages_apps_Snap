@@ -1510,6 +1510,9 @@ public class CaptureUI extends BaseUI implements PreviewGestures.SingleTapListen
         boolean changed = (width != mPreviewWidth) || (height != mPreviewHeight);
         mPreviewWidth = width;
         mPreviewHeight = height;
+        if (changed) {
+            showSurfaceView();
+        }
         return changed;
     }
 
