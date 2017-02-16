@@ -549,6 +549,10 @@ CHAR LIMIT = NONE] -->
   <!--  String shown when setting the homepage wallpaper in the background [CHAR LIMIT=NONE] -->
   <string name="setting_wallpaper">Hintergrund wird festgelegt</string>
   <!-- Menu, Video rotation labels [CHAR LIMIT=50] -->
+  <string name="pref_camera_video_rotation_label_90">90</string>
+  <string name="pref_camera_video_rotation_label_180">180</string>
+  <string name="pref_camera_video_rotation_label_270">270</string>
   <string name="remaining_photos_format">%d verbleibend</string>
+  <string name="initial_recording_seconds">00:00</string>
   <string name="makeup_video_size_limit">Verschönern funktioniert bei Videos nur in VGA-Auflösung.</string>
 </resources>

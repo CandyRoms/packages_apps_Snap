@@ -26,10 +26,7 @@
   <!-- Video quality setting entry. Videos will be recorded in QVGA quality. [CHAR LIMIT=24] -->
   <!-- Video quality setting entry. Videos will be recorded in QCIF quality. [CHAR LIMIT=24] -->
   <!-- Settings screen, Power Mode title -->
-  <string name="pref_camera_powermode_title">Режим живлення</string>
   <!-- Settings screen, Power mode dialog radio button choices -->
-  <string name="pref_camera_powermode_entry_lp">Низьке енергоспоживання</string>
-  <string name="pref_camera_powermode_entry_np">Нормальне енергоспоживання</string>
   <!-- Settings screen, Power mode dialog radio button choices -->
   <!-- Default Power mode.. -->
   <!-- Default auto exposure setting. Do not translate. -->
@@ -47,8 +44,6 @@
   <!-- Default Skin Tone Enhancement setting. Do not translate. -->
   <!-- Settings screen, Select Skin Tone Enhancement title -->
   <!-- Settings screen, Skin Tone Enhancement radio button choices -->
-  <string name="pref_camera_skinToneEnhancement_entry_enable">Увімкнути</string>
-  <string name="pref_camera_skinToneEnhancement_entry_disable">Вимкнути</string>
   <!-- Skin Tone Enhancement entry values. Do not translate. -->
   <!-- Settings screen, setting title text for ZSL-->
   <!-- Default selectable zone af setting. Do not translate. -->
@@ -62,15 +57,9 @@
   <!-- Manual white balance entry values -->
   <!-- Manual Focus entry values -->
   <!-- Instant Capture entry -->
-  <string name="pref_camera_instant_capture_title" translatable="true">Миттєве захоплення</string>
-  <string name="pref_camera_instant_capture_entry_aggressive_aec" translatable="true">Агресивний АЕC</string>
-  <string name="pref_camera_instant_capture_entry_fast_aec" translatable="true">Швидкий АЕC</string>
-  <string name="pref_camera_instant_capture_entry_disable" translatable="true">Вимкнути</string>
   <!-- Instant Capture entry values -->
   <!-- Settings screen, ZSL location dialog choices -->
-  <string name="pref_camera_zsl_entry_on">Увімк</string>
   <!-- The message is shown in toast when HDR or scene mode is enabled -->
-  <string name="hdr_enable_message">HDR увімкнуто, підтримується тільки режим авто сцени</string>
   <!-- Settings screen, Video HDR location dialog choices -->
   <!-- Settings screen, CDS location dialog choices -->
   <!-- Settings screen, video CDS location dialog choices -->
@@ -185,5 +174,4 @@
   <!-- Advanced features enable message -->
   <!-- The alas of CameraActivity for gesture operation -->
   <!-- Help menu strings -->
-  <string name="clearsight_capture_success">ClearSight захоплення пройшло успішно</string>
 </resources>

@@ -161,6 +161,7 @@
   <string name="pref_camera_shuttersound_entry_enable">Activat</string>
   <string name="pref_camera_shuttersound_entry_disable">Dezactivat</string>
   <!-- Default mce setting. Do not translate. -->
+  <string name="pref_camera_mce_default">activați</string>
   <!-- The message is shown in toast when the app encounters an unsupported selection for HFR/HSR mode -->
   <string name="error_app_unsupported_hfr_selection">Înregistrarea cu frecvenţă mare de cadre nu este suportată atunci când utilizaţi Stabilizare/Time lapse/HDR.</string>
   <!-- The message is shown in dialog when the app encounters an unsupported resolution for HFR mode -->

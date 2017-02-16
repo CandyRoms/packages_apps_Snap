@@ -85,11 +85,15 @@
   <!-- In select camera setting, back facing camera. [CHAR LIMIT=14] -->
   <!-- In select camera setting, front-facing camera. [CHAR LIMIT=14] -->
   <!-- Settings screen, setting title text -->
+  <string name="pref_camera_recordlocation_title">GPS місце розташування</string>
   <!--  Label for record location preference [CHAR LIMIT=50] -->
   <!-- Title for countdown timer on camera settings screen [CHAR LIMIT=30]-->
   <!-- Entry for countdown timer setting. e.g. 1 second, 10 seconds, etc. [CHAR LIMIT=30]-->
   <!-- Text followed by a checkbox to turn on/off sound effects during the countdown. [CHAR LIMIT = 24]-->
   <!-- Entry of camera save path -->
+  <string name="pref_camera_savepath_title">Пам\'ять</string>
+  <string name="pref_camera_savepath_entry_0">Телефон</string>
+  <string name="pref_camera_savepath_entry_1">SD-карта</string>
   <!-- Entry of a on/off setting. The setting is turned off. [CHAR LIMIT=15] -->
   <!-- Entry of a on/off setting. The setting is turned on. [CHAR LIMIT=15] -->
   <!-- The value of a camera preference indicating the setting is off. -->
