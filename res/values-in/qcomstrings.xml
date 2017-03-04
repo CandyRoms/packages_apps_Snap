@@ -364,12 +364,7 @@
   <string name="advance_feature_enable_msg">Bidikan terus menerus tidak didukung pada saat tampilan canggih diaktifkan</string>
   <!-- The alas of CameraActivity for gesture operation -->
   <string name="camera_gesture_title">Luncurkan Kamera</string>
-  <string name="pref_camera_tsmakeup_entry_off">Tidak aktif</string>
-  <string name="all_in_focus">Semua dalam fokus</string>
-  <string name="refocus_toast">Untuk fokus kembali pada foto yang terakhir, tekan di sini</string>
   <!-- Help menu strings -->
-  <string name="pref_camera2_camera2_entry_enable">Hidup</string>
-  <string name="pref_camera2_camera2_entry_disable">Mati</string>
   <string name="pref_camera_tsmakeup_entry_on">Aktif</string>
   <string name="pref_camera_tsmakeup_entry_off">Tidak aktif</string>
   <string name="pref_camera_tsmakeup_entry_low">Rendah</string>
