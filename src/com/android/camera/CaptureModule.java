@@ -729,7 +729,10 @@ public class CaptureModule implements CameraModule, PhotoController,
             }
             mCameraOpenCloseLock.release();
             mCamerasOpened = false;
+
             if (null != mActivity) {
+                Toast.makeText(mActivity,"open camera error id =" + id,
+                        Toast.LENGTH_LONG).show();
                 mActivity.finish();
             }
         }
@@ -1142,7 +1145,8 @@ public class CaptureModule implements CameraModule, PhotoController,
                                 // Finally, we start displaying the camera preview.
                                 // for cases where we are in dual mode with mono preview off,
                                 // don't set repeating request for mono
-                                if(id == MONO_ID && !canStartMonoPreview()) {
+                                if(id == MONO_ID && !canStartMonoPreview()
+                                        && getCameraMode() == DUAL_MODE) {
                                     mCaptureSession[id].capture(mPreviewRequestBuilder[id]
                                             .build(), mCaptureCallback, mCameraHandler);
                                 } else {
@@ -1408,7 +1412,7 @@ public class CaptureModule implements CameraModule, PhotoController,
                         lockFocus(MONO_ID);
                         break;
                     case BAYER_MODE:
-                        if (takeZSLPicture(BAYER_ID)) {
+                        if(takeZSLPicture(BAYER_ID)) {
                             return;
                         }
                         lockFocus(BAYER_ID);
@@ -1428,7 +1432,7 @@ public class CaptureModule implements CameraModule, PhotoController,
                 if(takeZSLPicture(cameraId)) {
                     return;
                 }
-                lockFocus(FRONT_ID);
+                lockFocus(cameraId);
             }
         }
     }
@@ -3234,6 +3238,7 @@ public class CaptureModule implements CameraModule, PhotoController,
 
     private void updateVideoSize() {
         String videoSize = mSettingsManager.getValue(SettingsManager.KEY_VIDEO_QUALITY);
+        if (videoSize == null) return;
         mVideoSize = parsePictureSize(videoSize);
         Size[] prevSizes = mSettingsManager.getSupportedOutputSize(getMainCameraId(),
                 MediaRecorder.class);
@@ -3779,7 +3784,18 @@ public class CaptureModule implements CameraModule, PhotoController,
         updateHFRSetting();
         boolean hfr = mHighSpeedCapture && !mHighSpeedRecordingMode;
 
-        mProfile = CamcorderProfile.get(cameraId, size);
+        if (CamcorderProfile.hasProfile(cameraId, size)) {
+            mProfile = CamcorderProfile.get(cameraId, size);
+        } else {
+            if (!"-1".equals(mSettingsManager.getValue(SettingsManager.KEY_SWITCH_CAMERA))) {
+                mProfile = CamcorderProfile.get(CamcorderProfile.QUALITY_HIGH);
+            } else {
+                RotateTextToast.makeText(mActivity, R.string.error_app_unsupported_profile,
+                        Toast.LENGTH_LONG).show();
+                return;
+            }
+        }
+
         int videoWidth = mProfile.videoFrameWidth;
         int videoHeight = mProfile.videoFrameHeight;
         mUnsupportedResolution = false;
@@ -4632,6 +4648,7 @@ public class CaptureModule implements CameraModule, PhotoController,
                 case SettingsManager.KEY_CAMERA_ID:
                 case SettingsManager.KEY_MONO_ONLY:
                 case SettingsManager.KEY_CLEARSIGHT:
+                case SettingsManager.KEY_SWITCH_CAMERA:
                 case SettingsManager.KEY_MONO_PREVIEW:
                     if (count == 0) restartAll();
                     return;
