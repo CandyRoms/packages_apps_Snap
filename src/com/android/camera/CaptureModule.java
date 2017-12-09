@@ -2564,6 +2564,7 @@ public class CaptureModule implements CameraModule, PhotoController,
     @Override
     public void onResumeAfterSuper() {
         Log.d(TAG, "onResume " + getCameraMode());
+        reinit();
         initializeValues();
         updatePreviewSize();
         mCameraIdList = new ArrayList<>();
@@ -4615,6 +4616,7 @@ public class CaptureModule implements CameraModule, PhotoController,
         boolean updatePreviewBayer = false;
         boolean updatePreviewMono = false;
         boolean updatePreviewFront = false;
+        boolean updatePreviewLogical = false;
         int count = 0;
         for (SettingsManager.SettingState settingState : settings) {
             String key = settingState.key;
