@@ -690,17 +690,19 @@ public class PostProcessor{
         mSaveRaw = isSaveRaw;
         if (mController.mSettingsManager.isZslSupported(mController.getMainCameraId())) {
             if(setFilter(postFilterId) || isFlashModeOn || isTrackingFocusOn || isMakeupOn || isSelfieMirrorOn
-                    || PersistUtil.getCameraZSLDisabled()
-                     || !SettingsManager.getInstance().isZSLInAppEnabled()
-                    || "disable".equals(SettingsManager.getInstance().getValue(SettingsManager.KEY_ZSL))
-                    || "enable".equals(
-                             SettingsManager.getInstance().getValue(SettingsManager.KEY_AUTO_HDR))
-                    || SettingsManager.getInstance().isCamera2HDRSupport()
-                    || "18".equals(SettingsManager.getInstance().getValue(
-                                      SettingsManager.KEY_SCENE_MODE))
-                    || mController.getCameraMode() == CaptureModule.DUAL_MODE
-                    || isSupportedQcfa) {
-                mUseZSL = false;
+                || PersistUtil.getCameraZSLDisabled()
+                || !SettingsManager.getInstance().isZSLInAppEnabled()
+                || SettingsManager.SCENE_MODE_BOKEH_STRING.equals(
+                    SettingsManager.getInstance().getValue(SettingsManager.KEY_SCENE_MODE))
+                || "disable".equals(SettingsManager.getInstance().getValue(SettingsManager.KEY_ZSL))
+                || "enable".equals(
+                         SettingsManager.getInstance().getValue(SettingsManager.KEY_AUTO_HDR))
+                || SettingsManager.getInstance().isCamera2HDRSupport()
+                || "18".equals(SettingsManager.getInstance().getValue(
+                                  SettingsManager.KEY_SCENE_MODE))
+                || mController.getCameraMode() == CaptureModule.DUAL_MODE
+                || isSupportedQcfa) {
+            mUseZSL = false;
             } else {
                 mUseZSL = true;
             }
