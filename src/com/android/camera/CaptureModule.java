@@ -1416,6 +1416,12 @@ public class CaptureModule implements CameraModule, PhotoController,
                     case MONO_MODE:
                         lockFocus(MONO_ID);
                         break;
+                    case SWITCH_MODE:
+                        if (takeZSLPicture(SWITCH_ID)) {
+                            return;
+                        }
+                        lockFocus(SWITCH_ID);
+                        break;
                 }
             } else {
                 int cameraId = SWITCH_ID == -1? FRONT_ID : SWITCH_ID;
