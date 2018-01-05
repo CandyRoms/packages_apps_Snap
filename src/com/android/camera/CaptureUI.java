@@ -185,6 +185,9 @@ public class CaptureUI implements PreviewGestures.SingleTapListener,
     private View mFrontBackSwitcher;
     private ImageView mMakeupButton;
     private SeekBar mMakeupSeekBar;
+    private SeekBar mBokehSeekBar;
+    private TextView mBokehTipText;
+    private RotateLayout mBokehTipRect;
     private View mMakeupSeekBarLayout;
     private View mSeekbarBody;
     private TextView mRecordingTimeView;
@@ -335,6 +338,28 @@ public class CaptureUI implements PreviewGestures.SingleTapListener,
                 mSettingsManager.setValue(SettingsManager.KEY_SCENE_MODE, "" + SettingsManager.SCENE_MODE_AUTO_INT);
             }
         });
+        mBokehSeekBar = (SeekBar) mRootView.findViewById(R.id.bokeh_seekbar);
+        mBokehSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                module.setBokehBlurDegree(progress);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                final SharedPreferences prefs =
+                        PreferenceManager.getDefaultSharedPreferences(mActivity);
+                prefs.edit().putInt(SettingsManager.KEY_BOKEH_BLUR_DEGREE, seekBar.getProgress())
+                        .apply();
+            }
+        });
+        mBokehTipText = mRootView.findViewById(R.id.bokeh_status);
+        mBokehTipRect = (RotateLayout) mRootView.findViewById(R.id.bokeh_tip_rect);
         initFilterModeButton();
         initSceneModeButton();
         initSwitchCamera();
@@ -584,6 +609,31 @@ public class CaptureUI implements PreviewGestures.SingleTapListener,
             mVideoButton.setVisibility(View.INVISIBLE);
         else if (mModule.getCurrentIntentMode() == CaptureModule.INTENT_MODE_NORMAL)
             mVideoButton.setVisibility(View.VISIBLE);
+    }
+
+    public void initializeBokehMode(boolean bokehmode) {
+        if (bokehmode) {
+            final SharedPreferences prefs =
+                    PreferenceManager.getDefaultSharedPreferences(mActivity);
+            int progress = prefs.getInt(SettingsManager.KEY_BOKEH_BLUR_DEGREE, 50);
+            mBokehSeekBar.setProgress(progress);
+            mBokehSeekBar.setVisibility(View.VISIBLE);
+            mVideoButton.setVisibility(View.INVISIBLE);
+        } else {
+            if (mBokehTipRect != null) {
+                mBokehTipRect.setVisibility(View.INVISIBLE);
+            }
+            mBokehSeekBar.setVisibility(View.INVISIBLE);
+            mVideoButton.setVisibility(View.VISIBLE);
+        }
+    }
+
+    public TextView getBokehTipView() {
+        return mBokehTipText;
+    }
+
+    public RotateLayout getBokehTipRct() {
+        return mBokehTipRect;
     }
 
     // called from onResume but only the first time
@@ -1428,6 +1478,16 @@ public class CaptureUI implements PreviewGestures.SingleTapListener,
                 mSceneModeName.setRotation(0);
                 mSceneModeLabelCloseIcon.setRotation(0);
                 mSceneModeLabelRect.setOrientation(orientation, false);
+            }
+        }
+
+        if (mBokehTipRect != null) {
+            if (orientation == 180) {
+                mBokehTipText.setRotation(180);
+                mBokehTipRect.setOrientation(0, false);
+            } else {
+                mBokehTipText.setRotation(0);
+                mBokehTipRect.setOrientation(orientation, false);
             }
         }
 
