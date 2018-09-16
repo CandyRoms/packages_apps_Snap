@@ -2568,7 +2568,6 @@ public class CaptureModule implements CameraModule, PhotoController,
         initializeValues();
         updatePreviewSize();
         mCameraIdList = new ArrayList<>();
-        int cameraId = getMainCameraId();
 
         if (mSound == null) {
             mSound = new MediaActionSound();
