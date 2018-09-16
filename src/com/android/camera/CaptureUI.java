@@ -37,6 +37,7 @@ import android.graphics.Rect;
 import android.graphics.drawable.AnimationDrawable;
 import android.hardware.Camera.Face;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
 import android.renderscript.Allocation;
 import android.renderscript.Element;
 import android.renderscript.RenderScript;
