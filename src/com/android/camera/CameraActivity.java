@@ -2097,7 +2097,7 @@ public class CameraActivity extends Activity
     }
 
     protected void initPowerShutter(ComboPreferences prefs) {
-        String val = prefs.getString(CameraSettings.KEY_POWER_SHUTTER,
+        /*String val = prefs.getString(CameraSettings.KEY_POWER_SHUTTER,
                 getResources().getString(R.string.pref_camera_power_shutter_default));
         if (!CameraUtil.hasCameraKey()) {
             mPowerShutter = val.equals(CameraSettings.VALUE_ON);
@@ -2108,7 +2108,7 @@ public class CameraActivity extends Activity
         } else {
             getWindow().clearPrivateFlags(
                     WindowManager.LayoutParams.PRIVATE_FLAG_PREVENT_POWER_KEY);
-        }
+        }*/
     }
 
     protected void initMaxBrightness(ComboPreferences prefs) {
